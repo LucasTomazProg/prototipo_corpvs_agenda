@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 router.post('/login', async (req, res) => {
+  console.log('Recebendo login para:', req.body.email); // Debug
   const { email, senha } = req.body;
   if(!email || !senha) return res.status(400).json({ error: 'Informe email e senha' });
   const user = await prisma.usuario.findUnique({ where: { email } });
