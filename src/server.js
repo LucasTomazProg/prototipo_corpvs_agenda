@@ -7,6 +7,9 @@ const helmet = require('helmet');
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000'  // Apenas permite requisições de localhost:3000
+}));
 app.use(helmet({ contentSecurityPolicy: false }));
 
 // Static
