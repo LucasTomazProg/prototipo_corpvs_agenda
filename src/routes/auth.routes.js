@@ -16,3 +16,6 @@ router.post('/login', async (req, res) => {
 });
 
 module.exports = router;
+
+console.log('Usuario encontrado:', user);
+console.log('Senha hash no banco:', user?.senhaHash);

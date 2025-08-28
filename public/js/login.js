@@ -12,3 +12,5 @@ document.querySelector('#loginForm').addEventListener('submit', async (e)=>{
     location.href = 'index.html';
   }catch(err){ alert(err.message); }
 });
+
+console.log('Tentando login:', email, senha);
