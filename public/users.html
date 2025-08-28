@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Usuários</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+  <div class="header">
+    <nav class="topnav navbar">
+      <a href="index.html">Agenda</a>
+      <a href="history.html">Histórico</a>
+      <a href="users.html" class="active">Usuários</a>
+      <a href="login.html" id="logoutLink">Sair</a>
+    </nav>
+  </div>
+
+
+  <div class="container">
+
+    <header><h1>Usuários</h1></header>
+
+    <section class="card">
+      <div class="content">
+        <h2 class="text-user">Pesquisar</h2>
+        <div class="row cols-3">
+          <div><label>Buscar</label><input id="q" placeholder="nome, email ou telefone"></div>
+          <div><label>Perfil</label><select id="fRole"><option value="">Todos</option><option value="ADM">ADM</option><option value="TECNICO">TÉCNICO</option></select></div>
+          <div><label>Ativo?</label><select id="fAtivo"><option value="">Todos</option><option value="true">Ativos</option><option value="false">Inativos</option></select></div>
+        </div>
+        <div class="actions">
+          <button id="btnBuscar">Buscar</button>
+          <button class="secondary" id="btnLimparFiltros">Limpar filtros</button>
+        </div>
+      </div>
+    </section>
+    <section class="card">
+      <div class="content">
+        <h2 class="text-user">Novo usuário / Editar</h2>
+        <form id="formUser">
+          <input type="hidden" id="userId" />
+          <div class="row cols-3">
+            <div><label>Nome</label><input id="nome" required placeholder="Nome completo"></div>
+            <div><label>Email</label><input id="email" type="email" required placeholder="nome@empresa.com"></div>
+            <div><label>Telefone (WhatsApp)</label><input id="telefone" placeholder="55DDDXXXXXXXX"></div>
+          </div>
+          <div class="row cols-3">
+            <div><label>Perfil</label><select id="role" required><option value="ADM">ADM</option><option value="TECNICO" selected>TÉCNICO</option></select></div>
+            <div><label>Senha</label><input id="senha" type="password" placeholder="defina ou altere a senha"></div>
+            <div><label>Status</label><select id="ativo"><option value="true" selected>Ativo</option><option value="false">Inativo</option></select></div>
+          </div>
+          <div class="actions">
+            <button id="btnSalvarUser">Salvar</button>
+            <button type="button" class="secondary" id="btnCancelarEdicao">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="content">
+        <h2 class="text-user">Lista</h2>
+        <div class="table-wrapper">
+          <table class="table" id="tabelaUsers">
+            <thead><tr><th>Nome</th><th>Email</th><th>Perfil</th><th>Telefone</th><th>Status</th><th>Ações</th></tr></thead>
+            <tbody id="tbodyUsers"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="js/users.js"></script>
+</body>
+</html>

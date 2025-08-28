@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de atendimento</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+  <div class="header">
+    <nav class="topnav navbar">
+      <a href="index.html">Agenda</a>
+      <a href="history.html" class="active">Histórico</a>
+      <a href="users.html">Usuários</a>
+      <a href="login.html" id="logoutLink">Sair</a>
+    </nav>
+  </div>
+
+  
+    <div class="container">
+      <header>
+        <h1>Histórico de Atendimentos</h1>
+      </header>
+      
+      <section class="card">
+        <div class="content">
+          <div class="table-wrapper">
+            <table class="table" id="tabela">
+              <thead>
+                <tr>
+                  <th>Data</th><th>Período</th><th>Cliente</th><th>Serviço</th>
+                  <th>Técnico</th><th>Resp.</th><th>Endereço</th><th>Obs.</th><th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="js/history.js"></script>
+</body>
+</html>

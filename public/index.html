@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agenda de Atendimentos</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+  <div class="header">
+    <nav class="topnav navbar">
+      <a href="index.html" class="active">Agenda</a>
+      <a href="history.html">Histórico</a>
+      <a href="users.html">Usuários</a>
+      <a href="login.html" id="logoutLink">Sair</a>
+    </nav>
+  </div>
+
+
+
+<div class="container">
+    <header>
+      <h1>Agenda de Atendimentos</h1>
+    </header>
+
+    <div>
+      <!-- FORMULÁRIO -->
+      <section class="card" aria-labelledby="formTitulo">
+        <div class="content">
+          <h2 id="formTitulo" class="sr-only">Formulário de cadastro</h2>
+          <form id="formAtendimento">
+            <div class="row cols-2">
+              <div>
+                <label for="cliente">Cliente</label>
+                <select id="cliente" required></select>
+              </div>
+              <div>
+                <label for="servico">Serviço</label>
+                <select id="servico" required></select>
+              </div>
+            </div>
+
+            <div class="row cols-3">
+              <div>
+                <label for="data">Data</label>
+                <input type="date" id="data" required />
+              </div>
+              <div>
+                <label for="periodo">Período</label>
+                <select id="periodo" required>
+                  <option value="Manhã">Manhã</option>
+                  <option value="Tarde">Tarde</option>
+                  <option value="Noite">Noite</option>
+                </select>
+              </div>
+              <div>
+                <label for="tecnico">Técnico</label>
+                <select id="tecnico" required></select>
+              </div>
+            </div>
+
+            <div class="row cols-2">
+              <div>
+                <label for="responsavel">Responsável no Local</label>
+                <input id="responsavel" placeholder="Nome do responsável" required />
+              </div>
+              <div>
+                <label for="endereco">Endereço</label>
+                <input id="endereco" placeholder="Rua, nº, bairro, cidade" required />
+              </div>
+            </div>
+
+            <div>
+              <label for="obs">Observações (opcional)</label>
+              <textarea id="obs" rows="3" placeholder="Detalhes adicionais, ponto de referência, etc."></textarea>
+            </div>
+
+            <div class="actions">
+              <button type="submit" id="btnEnviar">Salvar & Enviar no WhatsApp</button>
+              <button type="button" class="secondary" id="btnSalvar">Salvar sem enviar</button>
+              <!-- <button type="button" class="warn" id="btnExportar">Exportar CSV</button>
+              <button type="button" class="danger" id="btnLimpar">Limpar histórico</button> -->
+            </div>
+          </form>
+        </div>
+      </section>
+    </div>
+  </div>
+  
+  <script src="js/index.js"></script>
+</body>
+</html>

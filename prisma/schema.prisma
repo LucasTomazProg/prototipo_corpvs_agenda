@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id        String  @id @default(cuid())
+  nome      String
+  email     String  @unique
+  senhaHash String
+  role      Role    @default(TECNICO)
+  telefone  String?
+  ativo     Boolean @default(true)
+
+  atendimentosTecnico Atendimento[] @relation("TecnicoAtendimentos")
+  criados             Atendimento[] @relation("CriadoPorAtendimentos")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Role {
+  ADM
+  TECNICO
+}
+
+model Cliente {
+  id           String        @id @default(cuid())
+  nome         String        @unique
+  atendimentos Atendimento[] @relation("ClienteAtendimentos")
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model Servico {
+  id           String        @id @default(cuid())
+  nome         String        @unique
+  atendimentos Atendimento[] @relation("ServicoAtendimentos")
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model Atendimento {
+  id          String   @id @default(cuid())
+  data        DateTime
+  periodo     String
+  clienteId   String
+  servicoId   String
+  tecnicoId   String
+  responsavel String
+  endereco    String
+  obs         String?
+  criadoPorId String
+  criadoEm    DateTime @default(now())
+
+  cliente   Cliente @relation("ClienteAtendimentos", fields: [clienteId], references: [id])
+  servico   Servico @relation("ServicoAtendimentos", fields: [servicoId], references: [id])
+  tecnico   Usuario @relation("TecnicoAtendimentos", fields: [tecnicoId], references: [id])
+  criadoPor Usuario @relation("CriadoPorAtendimentos", fields: [criadoPorId], references: [id])
+}
