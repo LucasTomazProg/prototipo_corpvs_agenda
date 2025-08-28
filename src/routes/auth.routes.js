@@ -13,9 +13,10 @@ router.post('/login', async (req, res) => {
   if (!ok) return res.status(401).json({ error: 'Credenciais inválidas' });
   const token = jwt.sign({ sub: user.id, role: user.role }, process.env.JWT_SECRET || 'devsecret', { expiresIn: '8h' });
   res.json({ token, user: { id: user.id, nome: user.nome, role: user.role } });
+  console.log('Usuario encontrado:', user);
+  console.log('Senha hash no banco:', user?.senhaHash);
 });
 
 module.exports = router;
 
-console.log('Usuario encontrado:', user);
-console.log('Senha hash no banco:', user?.senhaHash);
+
