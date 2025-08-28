@@ -3,7 +3,11 @@ document.querySelector('#loginForm').addEventListener('submit', async (e)=>{
   const email = document.querySelector('#email').value.trim();
   const senha = document.querySelector('#senha').value;
   try{
-    const r = await fetch('/auth/login', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email, senha }) });
+    const r = await fetch('https://prototipo-corpvs-agenda-1.onrender.com/auth/login', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ email, senha })
+});
     if(!r.ok){ const j = await r.json().catch(()=>({})); throw new Error(j.error || 'Login inválido'); }
     const data = await r.json();
     localStorage.setItem('token', data.token);
